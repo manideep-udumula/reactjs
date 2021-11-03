@@ -1,6 +1,122 @@
-<html>
-  <body>
-  <h1> hiii
-  </h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            margin: 40px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+
+    <script>
+        function myfunc(variable){
+            var variable=document.getElementById(variable);
+            if(variable.value=="Hyderabad"){
+        var request = new XMLHttpRequest();
+        request.open("GET","https://api.openweathermap.org/data/2.5/weather?q=Hyderabad&appid=93f26e3c57081a6210de53b8dcfdfea4",true);
+        request.onload =  function(){
+            if( request.status>=200 && request.status<400){
+                var data = JSON.parse(request.responseText);
+                console.log(data);
+                document.getElementById('temp').innerHTML = data.main.temp;
+                document.getElementById('weather').innerHTML = data.weather[0].description;
+               var icon = data.weather[0].icon+".png";
+                document.getElementById('myimg').src = "https://openweathermap.org/img/w/"+icon ;
+            }
+            else {
+                console.log("some error");
+            }
+        };
+        request.onerror = function(){
+            console.log("connection error");
+        };
+       request.send();
+       document.getElementById('hyd').src="hyd.jpg";
+    }
+    else if(variable.value=="Delhi")
+    {
+        var request = new XMLHttpRequest();
+        request.open("GET","https://api.openweathermap.org/data/2.5/weather?q=delhi&appid=93f26e3c57081a6210de53b8dcfdfea4",true);
+        request.onload =  function(){
+            if( request.status>=200 && request.status<400){
+                var data = JSON.parse(request.responseText);
+                console.log(data);
+                document.getElementById('temp').innerHTML = data.main.temp;
+                document.getElementById('weather').innerHTML = data.weather[0].description;
+               var icon = data.weather[0].icon+".png";
+                document.getElementById('myimg').src = "https://openweathermap.org/img/w/"+icon ;
+            }
+            else {
+                console.log("some error");
+            }
+        };
+        request.onerror = function(){
+            console.log("connection error");
+        };
+       request.send();
+       document.getElementById('hyd').src="delhi.jpg";
+    }
+    else if(variable.value=="Chennai"){
+        var request = new XMLHttpRequest();
+        request.open("GET","https://api.openweathermap.org/data/2.5/weather?q=chennai&appid=93f26e3c57081a6210de53b8dcfdfea4",true);
+        request.onload =  function(){
+            if( request.status>=200 && request.status<400){
+                var data = JSON.parse(request.responseText);
+                console.log(data);
+                document.getElementById('temp').innerHTML = data.main.temp;
+                document.getElementById('weather').innerHTML = data.weather[0].description;
+               var icon = data.weather[0].icon+".png";
+                document.getElementById('myimg').src = "https://openweathermap.org/img/w/"+icon ;
+            }
+            else {
+                console.log("some error");
+            }
+        };
+        request.onerror = function(){
+            console.log("connection error");
+        };
+       request.send();
+       document.getElementById('hyd').src="chennai.jpg";
+    }
+    else if(variable.value=="Mumbai"){
+        var request = new XMLHttpRequest();
+        request.open("GET","https://api.openweathermap.org/data/2.5/weather?q=mumbai&appid=93f26e3c57081a6210de53b8dcfdfea4",true);
+        request.onload =  function(){
+            if( request.status>=200 && request.status<400){
+                var data = JSON.parse(request.responseText);
+                console.log(data);
+                document.getElementById('temp').innerHTML = data.main.temp;
+                document.getElementById('weather').innerHTML = data.weather[0].description;
+               var icon = data.weather[0].icon+".png";
+                document.getElementById('myimg').src = "https://openweathermap.org/img/w/"+icon ;
+            }
+            else {
+                console.log("some error");
+            }
+        };
+        request.onerror = function(){
+            console.log("connection error");
+        };
+       request.send();
+       document.getElementById('hyd').src="mumbai.jpg";
+    }
+    }
+    </script>
+</head>
+<body>
+    <center> <select id="list" onchange="myfunc(this.id)">
+        <option> Hyderabad </option>
+        <option> Mumbai </option>
+        <option>  Delhi </option>
+        <option> Chennai </option>
+    </select>
+    <h2 id="temp">  Temp here </h2>
+    <h2 id="weather">  Weather here </h2>
+    <img id="myimg" src="img.png" alt="whether image here"/> <br/>
+    <img id="hyd" src="hsgdh.jpg" ALT="hiii"/>
+</center>
+</body>
 </html>
